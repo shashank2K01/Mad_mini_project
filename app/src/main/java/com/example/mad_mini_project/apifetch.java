@@ -36,7 +36,7 @@ public class apifetch extends AppCompatActivity {
         TextView heading = findViewById(R.id.heading);
         TextView questionplace = findViewById(R.id.question);
         heading.setText("Catagory: "+cat);
-        Toast.makeText(this, cat, Toast.LENGTH_SHORT).show();
+
 
         String category="";
 
@@ -84,6 +84,7 @@ public class apifetch extends AppCompatActivity {
 
                     String Question = question.optString("question").toString();
                     Question =Question.replace("&quot;","\"\"");
+                    Question =Question.replace("&#039;","'");
                     questionplace.setText(Question);
 
                 } catch (JSONException e) {
@@ -110,20 +111,54 @@ public class apifetch extends AppCompatActivity {
             TextView questionplace = findViewById(R.id.question);
             Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
             counter++;
-
+            if(counter>10){
+                Intent j = new Intent(this,MainActivity.class);
+                Toast.makeText(this, "you win", Toast.LENGTH_SHORT).show();
+                startActivity(j);
+            }
             question = res.getJSONObject(counter);
             String Question = question.optString("question").toString();
             Question =Question.replace("&quot;","\"\"");
+            Question =Question.replace("&#039;","'");
             questionplace.setText(Question);
 
             
         }
         else{
             Toast.makeText(this, "wrong", Toast.LENGTH_SHORT).show();
+            Intent j = new Intent(this,MainActivity.class);
+            Toast.makeText(this, "you lose, You're score = "+counter, Toast.LENGTH_SHORT).show();
+
+            startActivity(j);
         }
     }
 
-    public void False_clicked(View v){
+    public void False_clicked(View v) throws JSONException {
+        String answer = question.optString("correct_answer").toString();
+        if(answer.equals("False")){
+            TextView questionplace = findViewById(R.id.question);
+            Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
+            counter++;
+            if(counter>10){
+                Intent j = new Intent(this,MainActivity.class);
+                Toast.makeText(this, "you win", Toast.LENGTH_SHORT).show();
+                startActivity(j);
+
+            }
+            question = res.getJSONObject(counter);
+            String Question = question.optString("question").toString();
+            Question =Question.replace("&quot;","\"\"");
+            Question =Question.replace("&#039;","'");
+            questionplace.setText(Question);
+
+
+        }
+        else{
+            Toast.makeText(this, "you lose, You're score = "+counter, Toast.LENGTH_SHORT).show();
+            Intent j = new Intent(this,MainActivity.class);
+
+            startActivity(j);
+        }
 
     }
 
