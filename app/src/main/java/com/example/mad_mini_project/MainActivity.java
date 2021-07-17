@@ -2,6 +2,7 @@ package com.example.mad_mini_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -56,8 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
         String cat = myspinner.getSelectedItem().toString();
         String dif = myspinner1.getSelectedItem().toString();
+        Intent i = new Intent(this,apifetch.class);
+        Bundle b = new Bundle();
+        b.putString("cat" , cat);
+        b.putString("dif",dif);
+        i.putExtras(b);
+        startActivity(i);
 
-        Toast.makeText(this, cat, Toast.LENGTH_SHORT).show();
     }
 
 
