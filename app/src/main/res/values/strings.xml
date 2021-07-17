@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Mad_mini_project</string>
+
+    <string-array name="names">
+        <item>Any Category</item>
+        <item>General Knowledge</item>
+        <item>Computer Science</item>
+    </string-array>
+
+    <string-array name="names1">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+</resources>
