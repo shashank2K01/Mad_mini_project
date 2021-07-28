@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mad_mini_project">
+        <activity android:name=".final_Activity"/>
         <activity android:name=".apifetch" />
         <activity android:name=".MainActivity">
             <intent-filter>

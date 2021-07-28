@@ -26,7 +26,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select category"/>
+            android:text="Select category"
+            android:layout_gravity="center"/>
 
     <Spinner
         android:id="@+id/spinner2"
@@ -48,7 +49,8 @@
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
-            android:text="Select Difficulty"/>
+            android:text="Select Difficulty"
+            android:layout_gravity="center"/>
 
         <Spinner
             android:id="@+id/spinner3"
@@ -61,8 +63,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Quiz"
+        android:textColor="@color/black"
         android:onClick="start"
         android:layout_gravity="center"
         android:layout_marginTop="20sp"
+        android:padding="15sp"
+        android:backgroundTint="@android:color/holo_blue_light"
+
         />
 </LinearLayout>

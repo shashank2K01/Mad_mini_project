@@ -69,7 +69,7 @@ public class apifetch extends AppCompatActivity {
         if(difficulty.length()>0)
             url = url +difficulty;
         requestQueue = Volley.newRequestQueue(this);
-            
+
 
 
 
@@ -112,24 +112,33 @@ public class apifetch extends AppCompatActivity {
             TextView questionplace = findViewById(R.id.question);
             Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
             counter++;
-            if(counter>10){
-                Intent j = new Intent(this,MainActivity.class);
-                Toast.makeText(this, "you win", Toast.LENGTH_SHORT).show();
+            if(counter==10){
+                //Intent j = new Intent(this,MainActivity.class);
+                //Toast.makeText(this, "you win", Toast.LENGTH_SHORT).show();
+                //startActivity(j);
+                Intent j = new Intent(this,final_Activity.class);
+                Bundle b = new Bundle();
+                //String message="You win. Your score is ";//+String.valueOf(counter);
+                b.putString("txt", "You won");
+                j.putExtras(b);
                 startActivity(j);
+            }else {
+                question = res.getJSONObject(counter);
+                String Question = question.optString("question").toString();
+                Question = Question.replace("&quot;", "\"\"");
+                Question = Question.replace("&#039;", "'");
+                questionplace.setText(Question);
             }
-            question = res.getJSONObject(counter);
-            String Question = question.optString("question").toString();
-            Question =Question.replace("&quot;","\"\"");
-            Question =Question.replace("&#039;","'");
-            questionplace.setText(Question);
-
             
         }
         else{
-            Toast.makeText(this, "wrong", Toast.LENGTH_SHORT).show();
-            Intent j = new Intent(this,MainActivity.class);
-            Toast.makeText(this, "you lose, You're score = "+counter, Toast.LENGTH_SHORT).show();
-
+            //Toast.makeText(this, "wrong", Toast.LENGTH_SHORT).show();
+            Intent j = new Intent(this,final_Activity.class);
+            Bundle b = new Bundle();
+            b.putString("txt","You lose. Your Score is "+String.valueOf(counter));
+            //b.putString("finid","Better luck next time. Your score is "+String.valueOf(counter));
+            //Toast.makeText(this, "you lose, You're score = "+counter, Toast.LENGTH_SHORT).show();
+            j.putExtras(b);
             startActivity(j);
         }
     }
@@ -140,24 +149,36 @@ public class apifetch extends AppCompatActivity {
             TextView questionplace = findViewById(R.id.question);
             Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
             counter++;
-            if(counter>10){
-                Intent j = new Intent(this,MainActivity.class);
-                Toast.makeText(this, "you win", Toast.LENGTH_SHORT).show();
+            if(counter==10){
+               // Intent j = new Intent(this,MainActivity.class);
+                //Toast.makeText(this, "you win", Toast.LENGTH_SHORT).show();
+                //startActivity(j);
+                Intent j = new Intent(this,final_Activity.class);
+                Bundle b = new Bundle();
+                //String message="You win. Your score is ";//+String.valueOf(counter);
+                b.putString("txt", "You won");
+                j.putExtras(b);
                 startActivity(j);
-
+            }else {
+                question = res.getJSONObject(counter);
+                String Question = question.optString("question").toString();
+                Question = Question.replace("&quot;", "\"\"");
+                Question = Question.replace("&#039;", "'");
+                questionplace.setText(Question);
             }
-            question = res.getJSONObject(counter);
-            String Question = question.optString("question").toString();
-            Question =Question.replace("&quot;","\"\"");
-            Question =Question.replace("&#039;","'");
-            questionplace.setText(Question);
-
 
         }
         else{
-            Toast.makeText(this, "you lose, You're score = "+counter, Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(this, "you lose, You're score = "+counter, Toast.LENGTH_SHORT).show();
             Intent j = new Intent(this,MainActivity.class);
 
+            startActivity(j);*/
+            Intent j = new Intent(this,final_Activity.class);
+            Bundle b = new Bundle();
+            b.putString("txt","You lose. Your Score is "+String.valueOf(counter));
+            //b.putString("finid","Better luck next time. Your score is "+String.valueOf(counter));
+            //Toast.makeText(this, "you lose, You're score = "+counter, Toast.LENGTH_SHORT).show();
+            j.putExtras(b);
             startActivity(j);
         }
 
